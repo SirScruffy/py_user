@@ -16,4 +16,4 @@ def add_user(user,password):
 
 
 
-(user,password) = eingabe()
+(password, user) = eingabe()
