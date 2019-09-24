@@ -1,6 +1,7 @@
 import os
 from mysql.connector import Error
 import MySQLdb
+import time
 
 
 def eingabe():
@@ -17,6 +18,12 @@ def eingabe():
 def add_user(user, password):
     #Anlegen des Benutzers
     os.system('useradd -d /home/' + user + ' -m ' + user + ' -p $(openssl passwd -1 ' + password + ')')
+
+    date = time.strftime('%Y%m%d')
+    system_time = time.strftime('%H%M%S')
+    logfile = open('logfile.txt', 'a+')
+    logfile.write('Der Benutzer',user,'wurde am',date,'um',system_time,'angelegt.')
+    logfile.close()
 
 
 def db_connect(host, db_user, database):
